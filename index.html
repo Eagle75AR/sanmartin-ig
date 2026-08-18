@@ -104,7 +104,7 @@
     .avatar-box {
       flex-shrink: 0;
       width: 130px; height: 155px;
-      border: 4px solid #c0392b; border-radius: 8px;
+      border: 4px solid #74ACDF; border-radius: 8px;
       background: #a8d8ea;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden; position: relative;
@@ -112,9 +112,11 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .avatar-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 0 4px #f9e400, 0 0 0 7px #c0392b;
-    }
+  transform: scale(1.03);
+  box-shadow: 0 0 0 3px #74ACDF,   /* celeste */
+              0 0 0 6px #FFFFFF,   /* blanco  */
+              0 0 0 9px #74ACDF;   /* celeste */
+}
     .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
     .avatar-box::after {
       content: '👁 Ver foto';
@@ -536,7 +538,7 @@
 
     <div class="profile-info-right">
       <div class="name-box">
-        <div class="profile-name">José de San<br>Martín.</div>
+        <div class="profile-name">José de San Martín</div>
       </div>
       <div class="handle"
            onclick="showToast('📋 ¡Seguí a @josedesanmartin_oficial!')">
@@ -585,6 +587,23 @@
     <!-- Columna izquierda -->
     <div class="left-column">
 
+      <!-- Compas de Libertad -->
+      <div class="compas-box">
+        <div class="compas-title">⚔️ Compas de Libertad</div>
+        <div class="compas-item"
+             onclick="showToast('🎖️ Manuel Belgrano: creador de la Bandera Argentina 🇦🇷')">
+          🎖️ Gral. Belgrano
+        </div>
+        <div class="compas-item"
+             onclick="showToast('🇨🇱 Bernardo O\'Higgins: liberó Chile junto al Gral!')">
+          🏔️ B. O'Higgins
+        </div>
+        <div class="compas-item"
+             onclick="showToast('🌎 Simón Bolívar: libertador del norte de América')">
+          🌎 Simón Bolívar
+        </div>
+      </div>
+      
       <!-- Posts -->
       <div>
         <div class="posts-label">POSTS:</div>
@@ -602,23 +621,6 @@
             <div class="post-caption">Con mi hija Mercedes</div>
           </div>
 
-        </div>
-      </div>
-
-      <!-- Compas de Libertad -->
-      <div class="compas-box">
-        <div class="compas-title">⚔️ Compas de Libertad</div>
-        <div class="compas-item"
-             onclick="showToast('🎖️ Manuel Belgrano: creador de la Bandera Argentina 🇦🇷')">
-          🎖️ Gral. Belgrano
-        </div>
-        <div class="compas-item"
-             onclick="showToast('🇨🇱 Bernardo O\'Higgins: liberó Chile junto al Gral!')">
-          🏔️ B. O'Higgins
-        </div>
-        <div class="compas-item"
-             onclick="showToast('🌎 Simón Bolívar: libertador del norte de América')">
-          🌎 Simón Bolívar
         </div>
       </div>
 
@@ -643,7 +645,8 @@
           🇵🇪 Perú
         </div>
         <div class="siguiendo-item"
-             onclick="showToast('🏫 ¡El 4to D IIQ estudia su historia!')">
+             onclick="openAlumnas()">
+             <!-- onclick="showToast('🏫 ¡El 4to D IIQ estudia su historia!')" -->
           🏫 4to D IIQ
         </div>
         <div class="siguiendo-item"
@@ -688,7 +691,8 @@
           <span class="seguidor-bullet">⭐</span>Profe Mailén
         </div>
         <div class="seguidor-item"
-             onclick="showToast('🎒 ¡El 4to D IIQ hizo este Instagram con amor! 🇦🇷')">
+             onclick="openAlumnas()">
+             <!-- onclick="showToast('🎒 ¡El 4to D IIQ hizo este Instagram con amor! 🇦🇷')" -->
           <span class="seguidor-bullet">🎒</span>4to D IIQ
         </div>
 
@@ -745,7 +749,7 @@
 
   <!-- ===== FIRMA ===== -->
   <div class="footer-made anim-footer">
-    ✏️ Hecho con amor por 4to D IIQ • 17 de Agosto 🇦🇷<br>
+    ✏️ Hecho con amor por <b><a onclick="openAlumnas()">4to D IIQ</a></b> • 17 de Agosto 🇦🇷<br>
   </div>
 
   <!-- ===== MODAL AVATAR ===== -->
@@ -813,6 +817,131 @@
 
     </div>
   </div>
+
+  <!-- ===== MODAL ALUMNAS ===== -->
+<div class="modal-overlay" id="alumnaModal" onclick="closeAlumnas()">
+  <div style="
+    width: 90%;
+    max-width: 340px;
+    background: #fef9e7;
+    border: 4px solid #c0392b;
+    border-radius: 14px;
+    overflow: hidden;
+    animation: popIn 0.25s ease;
+    position: relative;
+    font-family: 'Caveat', cursive;
+  " onclick="event.stopPropagation()">
+
+    <!-- Botón cerrar -->
+    <button onclick="closeAlumnas()" style="
+      position: absolute; top: 8px; right: 8px;
+      background: #c0392b; color: white; border: none;
+      border-radius: 50%; width: 32px; height: 32px;
+      font-size: 18px; font-weight: 700;
+      cursor: pointer; z-index: 10; line-height: 1;
+      font-family: 'Caveat', cursive;
+    ">✕</button>
+
+    <!-- Header -->
+    <div style="
+      background: #c0392b;
+      padding: 16px 14px 12px;
+      text-align: center;
+    ">
+      <div style="font-size: 36px; margin-bottom: 4px;">🎒✏️</div>
+      <div style="
+        font-size: 22px; font-weight: 700;
+        color: #f9e400; line-height: 1.2;
+      ">4to D IIQ</div>
+      <div style="font-size: 14px; color: #fff; opacity: 0.9;">
+        Las autoras de este Instagram 🇦🇷
+      </div>
+    </div>
+
+    <!-- Lista de alumnas -->
+    <div style="padding: 16px 20px;">
+
+      <div style="
+        font-size: 13px; color: #888;
+        text-align: center; margin-bottom: 12px;
+        font-family: 'Patrick Hand', cursive;
+      ">
+        ✨ Hicieron este trabajo con amor el 17 de agosto ✨
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        
+        <div style="
+          display: flex; align-items: center; gap: 12px;
+          background: #fff; border: 2px solid #a8d8ea;
+          border-radius: 10px; padding: 8px 12px;
+        ">
+          <span style="font-size: 26px;">🌟</span>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; color: #1a1a1a;">Alma Martino</div>
+            <!-- div style="font-size: 12px; color: #888; font-family: 'Patrick Hand', cursive;">
+              Diseñadora & patriota
+            </div -->
+          </div>
+        </div>
+
+        <div style="
+          display: flex; align-items: center; gap: 12px;
+          background: #fff; border: 2px solid #a9dfbf;
+          border-radius: 10px; padding: 8px 12px;
+        ">
+          <span style="font-size: 26px;">⚔️</span>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; color: #1a1a1a;">Arya Córdoba</div>
+            <!-- div style="font-size: 12px; color: #888; font-family: 'Patrick Hand', cursive;">
+              Estratega & escritora
+            </div -->
+          </div>
+        </div>
+
+        <div style="
+          display: flex; align-items: center; gap: 12px;
+          background: #fff; border: 2px solid #d7bde2;
+          border-radius: 10px; padding: 8px 12px;
+        ">
+          <span style="font-size: 26px;">🌸</span>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; color: #1a1a1a;">Aymé Herrera</div>
+            <!-- div style="font-size: 12px; color: #888; font-family: 'Patrick Hand', cursive;">
+              Creativa & investigadora
+            </div -->
+          </div>
+        </div>
+
+        <div style="
+          display: flex; align-items: center; gap: 12px;
+          background: #fff; border: 2px solid #f9e400;
+          border-radius: 10px; padding: 8px 12px;
+        ">
+          <span style="font-size: 26px;">🌊</span>
+          <div>
+            <div style="font-size: 20px; font-weight: 700; color: #1a1a1a;">Brisa González</div>
+            <!-- div style="font-size: 12px; color: #888; font-family: 'Patrick Hand', cursive;">
+              Artista & historiadora
+            </div -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Frase al pie -->
+      <div style="
+        margin-top: 14px;
+        background: #2c3e50; border-radius: 8px;
+        padding: 10px; text-align: center;
+        color: #f9e400; font-size: 15px; font-weight: 700;
+      ">
+        🇦🇷 "Seamos libres, que lo demás no importa nada" 🇦🇷
+      </div>
+
+    </div>
+  </div>
+</div>
 
   <!-- ===== TOAST ===== -->
   <div class="toast" id="toast"></div>
@@ -973,8 +1102,17 @@
        ESCAPE
     ================================ */
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closePost(); closeAvatar(); }
+      if (e.key === 'Escape') { closePost(); closeAvatar(); closeAlumnas(); }
     });
+
+    function openAlumnas() {
+  document.getElementById('alumnaModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAlumnas() {
+  document.getElementById('alumnaModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
   </script>
 </body>
